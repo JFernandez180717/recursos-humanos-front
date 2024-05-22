@@ -3,27 +3,82 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header class="header">
-    <!--img alt="Vue logo" class="header__logo" src="@/assets/logo.svg" width="125" height="125" /-->
-    <div class="header__logo">
-        <i class="fa-solid fa-building-user"></i>
-    </div>
+    <header>
 
-    <div class="header__wrapper">
+        <!--div class="container"-->
 
-      <nav class="header__nav">
-        <RouterLink to="/">Inicio</RouterLink>
-        <RouterLink to="/about">Acerca de</RouterLink>
-      </nav>
+            <!--nav class="header__nav">
+            <RouterLink to="/">Inicio</RouterLink>
+            <RouterLink to="/about">Acerca de</RouterLink>
+            </nav-->
+            <nav class="navbar bg-primary">
+                <div class="navbar__container">
+                    <div class="container-fluid">
+                        <RouterLink to="/">
+                            <i class="fa-solid fa-building-user logo"></i> 
+                        </RouterLink>
+                        <RouterLink class="navbar__texto" to="/">
+                            <span>Recursos Humanos APP</span>
+                        </RouterLink>
+                    </div>
+                </div>
+            </nav>
 
-    </div>
-  </header>
+    </header>
 
-  <RouterView />
+    <RouterView />
+
+    <footer class="fixed-bottom">
+        Todos los derechos reservados JFS &copy;
+    </footer>
 </template>
 
 <style scoped>
-.header{
+header {
+    width: 100%;
+}
+
+.navbar__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-fluid {
+    justify-content: flex-start;
+}
+
+.navbar__texto {
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.navbar__texto > span {
+    padding-left: 1rem;
+}
+
+.navbar__about {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 1px solid white;
+}
+
+.logo {
+    font-size: 2rem;
+    color: white;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    background-color: #f0f0f0;
+}
+/*.header{
     width: 100%;
     height: 3rem;
     border: 1px solid black;
