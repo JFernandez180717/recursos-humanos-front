@@ -11,7 +11,7 @@
                 Cargos
             </RouterLink>
             <RouterLink class="p-5 me-3 link border border-primary-subtle rounded-3" to="/areas">
-                Areas
+                Áreas
             </RouterLink>
             <RouterLink class="p-5 me-3 link border border-primary-subtle rounded-3" to="/about">
                 Acerca de
@@ -24,16 +24,16 @@
 .link {
     width: 20rem;
     text-decoration: none;
-    background-color: white;
+    background-color: var(--bs-primary);
     font-weight: bold;
-    color: var(--bs-primary);
+    color: white;
     transition: all 300ms linear;
     text-align: center;
 }
 
 .link:hover {
-    background-color: var(--bs-primary);
-    color: white;
+    background-color: white;
+    color: var(--bs-primary);
 }
 
 .container-main {

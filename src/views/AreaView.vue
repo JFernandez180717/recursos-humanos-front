@@ -33,13 +33,20 @@ fetch('http://localhost:8080/api/area/all')
                         </RouterLink>
                     </td>
                     <td class="tbody__td">
-                        <RouterLink class="btn-editar" :to="`/areas/editar/${area.idArea}`">
+                        <RouterLink class="btn-eliminar" :to="`/areas/eliminar/${area.idArea}`">
                             <i class="trash fa-solid fa-trash-can"> </i>
                         </RouterLink>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <div class="row mt-5">
+            <div class="col">
+                <RouterLink class="btn-back" to="/">
+                    Regresar <i class="fa-solid fa-circle-arrow-left"></i>
+                </RouterLink>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -71,6 +78,8 @@ fetch('http://localhost:8080/api/area/all')
     width: 2.5rem;
     height: 2.5rem;
     background-color: var(--bs-warning);
+    transition: all 300ms linear;
+    box-shadow: 2px 2px 2px 2px #eee;
 }
 
 .trash {
@@ -82,5 +91,38 @@ fetch('http://localhost:8080/api/area/all')
     width: 2.5rem;
     height: 2.5rem;
     background-color: var(--bs-danger);
+    transition: all 300ms linear;
+    box-shadow: 2px 2px 2px 2px #eee;
+}
+
+.edit:hover {
+    background-color: white;
+    color: var(--bs-warning);
+    border: 1px solid var(--bs-warning);
+}
+
+.trash:hover {
+    background-color: white;
+    color: var(--bs-danger);
+    border: 1px solid var(--bs-danger);
+}
+
+.btn-back {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    height: 100%;
+    padding: 0.8rem 0.5rem 0.8rem 0.5rem;
+    background-color: var(--bs-danger);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px 2px #eee;
+    transition: all 300ms linear;
+}
+
+.btn-back:hover {
+    background-color: white;
+    color: var(--bs-danger);
+    border: 1px solid var(--bs-danger);
 }
 </style>
