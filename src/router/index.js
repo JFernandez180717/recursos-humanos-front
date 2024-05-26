@@ -7,7 +7,8 @@ const router = createRouter({
     routes: [
         { path: '/', component: HomeView },
         { path: '/about', component: import('@/views/AboutView.vue') },
-        { path: '/areas', component: import('@/views/AreaView.vue') }
+        { path: '/areas', component: () => import('@/views/AreaView.vue') },
+        { path: '/areas/editar/:idArea', component: () => import('@/views/EditarAreaView.vue') }
     ]
 })
 

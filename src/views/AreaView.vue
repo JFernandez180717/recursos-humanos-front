@@ -1,5 +1,13 @@
 <script setup>
+import { ref, onMounted, toRef } from 'vue';
 
+let areas = ref();
+
+fetch('http://localhost:8080/api/area/all')
+.then((response) => response.json())
+.then((json) => {
+    areas.value = json;
+});
 </script>
 
 <template>
@@ -7,7 +15,7 @@
         <table class="table">
             <thead class="table__head">
                 <tr>
-                    <th scope="col">Id</th>
+                    <th class="ps-4" scope="col">Id</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Editar</th>
@@ -15,48 +23,18 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <tr>
-                    <th class="tbody__td" scope="row">1</th>
-                    <td class="tbody__td">Mark</td>
-                    <td class="tbody__td">Otto</td>
+                <tr v-for="area in areas" :key="area.idArea">
+                    <th class="tbody__td ps-4" scope="row">{{ area.idArea }}</th>
+                    <td class="tbody__td">{{ area.descripcion }}</td>
+                    <td class="tbody__td">{{ area.estado ? 'Activo' : 'Inactivo' }}</td>
                     <td class="tbody__td tbody-editar">
-                        <RouterLink class="btn-editar" to="/editar">
+                        <RouterLink class="btn-editar" :to="`/areas/editar/${area.idArea}`">
                             <i class="edit fa-solid fa-pen"></i>
                         </RouterLink>
                     </td>
                     <td class="tbody__td">
-                        <RouterLink class="btn-editar" to="/editar">
-                            <i class="trash fa-solid fa-trash-can"></i>
-                        </RouterLink>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="tbody__td" scope="row">2</th>
-                    <td class="tbody__td">Jacob</td>
-                    <td class="tbody__td">Thornton</td>
-                    <td class="tbody__td tbody-editar">
-                        <RouterLink class="btn-editar" to="/editar">
-                            <i class="edit fa-solid fa-pen"></i>
-                        </RouterLink>
-                    </td>
-                    <td class="tbody__td">
-                        <RouterLink class="btn-editar" to="/editar">
-                            <i class="trash fa-solid fa-trash-can"></i>
-                        </RouterLink>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="tbody__td" scope="row">3</th>
-                    <td class="tbody__td">Larry the Bird</td>
-                    <td class="tbody__td">Activo</td>
-                    <td class="tbody__td">
-                        <RouterLink class="btn-editar" to="/editar">
-                            <i class="edit fa-solid fa-pen"></i>
-                        </RouterLink>
-                    </td>
-                    <td class="tbody__td">
-                        <RouterLink class="btn-editar" to="/editar">
-                            <i class="trash fa-solid fa-trash-can"></i>
+                        <RouterLink class="btn-editar" :to="`/areas/editar/${area.idArea}`">
+                            <i class="trash fa-solid fa-trash-can"> </i>
                         </RouterLink>
                     </td>
                 </tr>
